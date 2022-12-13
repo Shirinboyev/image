@@ -1,159 +1,85 @@
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatefulWidget {
-//   MyApp({super.key});
-
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-//   List<String> data = ['sdfsdfsdsdfsfdvs', 'sdfvsfdvsdfvsdfvsdfvsdf','sergfarafsdfdsdfsd'];
-// }
-
-// class _MyAppState extends State<MyApp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//           body: Container(
-//         child: Column(
-//           children: [],
-//         ),
-//       )),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Mywidget(),
+  ));
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
+class Mywidget extends StatefulWidget {
+  const Mywidget({Key? key}) : super(key: key);
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Mywidget> createState() => _MywidgetState();
 }
 
-class _MyAppState extends State<MyApp> {
-  int scale = 0;
-  int scole = 0;
+int scole = 0;
+int index = 0;
+List<String> path = [
+  'images/dar.png',
+  'images/nat.png',
+  'images/img.png',
+  'images/yusuf.png'
+];
+
+class _MywidgetState extends State<Mywidget> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          body: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-              Column(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-            if (scale == 0)
-                  Container(
-                    child: Image.asset('images/sami.png'),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // if (scole > 4)
+          Image.asset(path[index % 4]),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 300),
+                child: Container(
+                  // alignment: Alignment.bottomCenter,
+                  color: Colors.red,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            index--;
+                            scole--;
+                            if(scole==index.bitLength);
+                          });
+                        },
+                        child: Text(
+                          '<',
+                          style: TextStyle(fontSize: 30, color: Colors.black),
+                        ),
+                      ),
+                      Text(
+                        'Score $scole',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            index++;
+                            scole++;
+                          });
+                        },
+                        child: Text(
+                          '>',
+                          style: TextStyle(fontSize: 30, color: Colors.black),
+                        ),
+                      )
+                    ],
                   ),
-            if (scale == 1)
-              Container(
-                child: Image.asset(
-                  'images/yusuf.png',
-                  scale: 2,
                 ),
               ),
-            if (scale == -1)
-              Container(
-                child: Image.asset(
-                  'images/img.png',
-                  scale: 5,
-                ),
-              ),
-            if (scale == -2)
-              Container(
-                child: Image.asset(
-                  'images/red.png',
-                  scale: 8,
-                ),
-              ),
-            if (scale == 2)
-              Container(
-                child: Image.asset(
-                  'images/dub.png',
-                  scale: 5,
-                ),
-              ),
-            if (scale == 3)
-              Container(
-                child: Image.asset(
-                  'images/oy.png',
-                  scale: 8,
-                ),
-              ),
-            if (scale == -3)
-              Container(
-                child: Image.asset(
-                  'images/nat.png',
-                  scale: 1,
-                ),
-              ),
-            if (scale == 4)
-              Container(
-                child: Image.asset(
-                  'images/nature.png',
-                  scale: 5,
-                ),
-              ),
-            if (scale == -4)
-              Container(
-                child: Image.asset(
-                  'images/dar.png',
-                  scale: 5,
-                ),
-              ),
-                ],
-              ),
-            Container(
-              color: Colors.red,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      scale--;
-                      setState(() {});
-                    },
-                    child: Text(
-                      '<',
-                      style: TextStyle(fontSize: 30, color: Colors.black),
-                    ),
-                  ),
-                  Text(
-                    'Score $scale',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      scale++;
-                      setState(() {});
-                    },
-                    child: Text(
-                      '>',
-                      style: TextStyle(fontSize: 30, color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Text(
-            //   'Score $scale',
-            //   style: TextStyle(fontSize: 30),
-            // ),
-          ],
-        ),
-      )),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
