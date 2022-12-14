@@ -17,19 +17,37 @@ int scole = 0;
 int index = 0;
 List path = [
   Column(
-    children: [Image.asset('images/oy.png'), Text('OY')],
+    children: [
+      Image.asset('images/oy.png'),
+      Text(
+        '\n\nOY',
+        style: TextStyle(fontSize: 30),
+      )
+    ],
   ),
   Column(
-    children: [Image.asset('images/dar.png'), Text('data')],
+    children: [
+      Image.asset('images/dar.png'),
+      Text('data', style: TextStyle(fontSize: 30))
+    ],
   ),
   Column(
-    children: [Image.asset('images/nat.png'), Text('data')],
+    children: [
+      Image.asset('images/nat.png'),
+      Text('data', style: TextStyle(fontSize: 30))
+    ],
   ),
   Column(
-    children: [Image.asset('images/img.png'), Text('data')],
+    children: [
+      Image.asset('images/img.png'),
+      Text('data', style: TextStyle(fontSize: 30))
+    ],
   ),
   Column(
-    children: [Image.asset('images/yusuf.png'), Text('data')],
+    children: [
+      Image.asset('images/yusuf.png'),
+      Text('data', style: TextStyle(fontSize: 30))
+    ],
   )
 ];
 
@@ -48,7 +66,7 @@ class _MywidgetState extends State<Mywidget> {
               // Image.asset(path[index %4]),
               path[index],
               Padding(
-                padding: const EdgeInsets.only(top: 300),
+                padding: const EdgeInsets.only(top: 200),
                 child: Container(
                   // alignment: Alignment.bottomCenter,
                   color: Colors.white,
